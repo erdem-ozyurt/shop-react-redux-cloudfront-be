@@ -1,0 +1,23 @@
+service: shop-react-redux-cloudfront-be
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-1
+  environment:
+    FRONT_END_LINK: d1gaiy815mutdt.cloudfront.net
+
+functions:
+  getProductList:
+    handler: handler.getProductList
+    events:
+      - httpApi:
+          path: /products
+          method: GET
+  getProductsById:
+    handler: handler.getProductById
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: GET

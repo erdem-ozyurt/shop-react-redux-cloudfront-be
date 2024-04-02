@@ -1,0 +1,50 @@
+openapi: 3.0.0
+
+info:
+  title: shop-react-redux-cloudfront-be
+  version: 1.0.0
+paths:
+  /products:
+    get:
+      responses:
+        200:
+          description: list of the productss
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    price:
+                      type: number
+                    title:
+                      type: string
+  /products/{productId}:
+    get:
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The product with An ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  price:
+                    type: number
